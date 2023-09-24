@@ -90,9 +90,9 @@ const Products = (props) => {
   
   //  Fetch Data
   const { Fragment, useState, useEffect, useReducer } = React;
-  const [query, setQuery] = useState("http://localhost:1337/products");
+  const [query, setQuery] = useState("http://localhost:1337/api/products");
   const [{ data, isLoading, isError }, doFetch] = useDataApi(
-    "http://localhost:1337/products",
+    "http://localhost:1337/api/products",
     {
       data: [],
     }
@@ -126,24 +126,20 @@ const Products = (props) => {
     console.log(cart);
   };
   
-  //const photos = ["apple.png", "orange.png", "beans.png", "cabbage.png"];
 
   let list = items.map((item, index) => {
-    let n = index + 1049;
+    let n = index + 800;
     let picsum = "https://picsum.photos/" + n;
 
     
     return (
       <li key={index}>
         <Image src={picsum} width={70} roundedCircle></Image>
-        <br />
-        <Button variant="primary" size="large">
+          <Button variant="primary" size="large">
           {item.name}
           :&nbsp;${item.cost}
-          <br />
-            Instock: {item.instock}
+          Instock: {item.instock}
         </Button>
-          <br />
         <input name={item.name} type="submit" onClick={addToCart}></input>
       </li>
     );
